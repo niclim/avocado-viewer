@@ -10,6 +10,6 @@ __pycache__/
 
 # server
 /server/node_modules
-/server/assets/pics
+/server/static/pics
 
 .env

@@ -5,3 +5,9 @@ server
   - over a month
   - over a year
 -> backend endpoint figures out what images to load, and image viewer handles everything else
+
+
+todo:
+- split out commands into different prompts
+- add response to figure out what photos to server
+- add something to pull into local db

@@ -5,13 +5,6 @@
   const loadingSpinner = './assets/loadingspinner.gif'
   const imageViewer = document.getElementById('avocado-viewer')
 
-  // Temp start
-  const defaultImagesToLoad = []
-  const padZeros = val => ('0000000' + val).slice(-5)
-  for (let i = 1; i < 80; i++) {
-    defaultImagesToLoad.push(`img${padZeros(i)}`)
-  }
-  // temp end
   const mount = (imageViewer) => {
     const resetId = 'image-viewer-reset'
     const image = `
@@ -53,17 +46,20 @@
         img.onerror = reject
       })
     }
-    const imagePromises = images.map(image => getImage(`./pics/${image}.jpg`))
+    const imagePromises = images.map(image => getImage(`./pics/${image.image}`))
     return Promise.all(imagePromises)
   }
 
   // will hit an endpoint and get information here instead of hardcoded
-  const getImageNameToLoad = () => {
-    return Promise.resolve(defaultImagesToLoad)
+  const getImageNameToLoad = (timePeriod = 'alltime') => {
+    // update this to be variable and selectable
+    return window
+      .fetch(`/api/get_images?timePeriod=alltime`)
+      .then(res => res.json())
   }
 
   const updateImage = image => {
-    document.getElementById(imageId).src = `./pics/${image}.jpg`
+    document.getElementById(imageId).src = `./pics/${image.image}`
   }
 
   const load = async (images) => {

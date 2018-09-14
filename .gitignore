@@ -1,0 +1,15 @@
+# ide
+.vscode
+
+.DS_Store
+
+# python generated
+__pycache__/
+*.py[cod]
+/photo
+
+# server
+/server/node_modules
+/server/assets/pics
+
+.env

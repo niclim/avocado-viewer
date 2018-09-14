@@ -1,0 +1,7 @@
+server
+-> have increments and a viewer
+  - over a day
+  - over a week
+  - over a month
+  - over a year
+-> backend endpoint figures out what images to load, and image viewer handles everything else

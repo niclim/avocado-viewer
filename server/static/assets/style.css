@@ -1,0 +1,53 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: url('./avocado.png') repeat;
+}
+
+.content {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+#avocado-viewer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-container {
+  max-width: 800px;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container > img {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);  
+  max-width: 100%;
+}
+
+.controls {
+  background: #fff;
+  padding: 20px;
+  border-radius: 3px;
+
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);  
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.controls:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25), 0 2px 4px rgba(0,0,0,0.22);
+}
+
+.flying-avocado {
+  position: absolute;
+}

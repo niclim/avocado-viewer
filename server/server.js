@@ -11,6 +11,11 @@ app
   .use(bodyParser.json())
   .use(express.static(staticPath))
   .post('/api/add_image', (req, res) => {
+    const KEY = process.env.SECRET_KEY || ''
+    if (KEY !== req.body.key) {
+      return res.send(401).send('unauthenticated')
+    }
+
     const { name } = req.body
     const imgTimestamp = String(
       new Date(
@@ -25,6 +30,9 @@ app
       })
       .then(() => {
         res.status(200).send('ok')
+      })
+      .catch(() => {
+        res.status(400).send('already sent request')
       })
   })
 

@@ -27,7 +27,7 @@ app
     db('images')
       .then(rows => {
         rows.sort((a, b) => (
-          Number(a) - Number(b)
+          Number(a.time_taken) - Number(b.time_taken)
         ))
         res.json(rows)
       })

@@ -25,8 +25,10 @@ app
       return res.send(400).send('invalid increment')
     }
     db('images')
-      .orderBy('timestamp', 'asc')
       .then(rows => {
+        rows.sort((a, b) => (
+          Number(a) - Number(b)
+        ))
         res.json(rows)
       })
   })

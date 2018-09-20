@@ -4,7 +4,7 @@
   const timeSliderId = 'time-slider'
   const loadingSpinner = './assets/loadingspinner.gif'
   const imageViewer = document.getElementById('avocado-viewer')
-
+  let imagesCache = [] // we don't want this to be garbage collected
   const mount = (imageViewer) => {
     const resetId = 'image-viewer-reset'
     const image = `
@@ -39,10 +39,10 @@
 
   const preloadImages = (images) => {
     const getImage = (imgPath) => {
-      const img = new window.Image()
-      img.src = imgPath
       return new Promise((resolve, reject) => {
-        img.onload = resolve
+        const img = new window.Image()
+        img.src = imgPath
+        img.onload = () => resolve(img)
         img.onerror = reject
       })
     }
@@ -63,7 +63,7 @@
   }
 
   const load = async (images) => {
-    await preloadImages(images)
+    imagesCache = await preloadImages(images)
     document.getElementById(timeSliderId).max = images.length - 1
     updateImage(images[0])
     loaded = true
